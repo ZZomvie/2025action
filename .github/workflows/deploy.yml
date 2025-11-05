@@ -10,7 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-
-      - name: hell world
-        run: echo "hell world"
+      - name: hello world
+        run: echo "hello world"
