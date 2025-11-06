@@ -1,4 +1,4 @@
-name: github action start
+name: react deploy
 
 on:
   push:
@@ -8,21 +8,16 @@ on:
 jobs:
   my-deploy-job:
     runs-on: ubuntu-latest
+    env:
+      REMOTE_DIR: /home/ubuntu/2025action
 
     steps:
-      - name: hello world
-        run: echo "hello world"
-
-      - name: many sentence
-        run: |
-          echo "bad"
-          echo "bye"
-
-      - name: use variable
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-
-      - name: git action secret
-        run: |
-          echo ${{secrets.MY_NAME}}
+      - name: ssh to ec2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.EC2_HOST}}
+          username: ubuntu
+          key: ${{secrets.EC2_SSH_KEY}}
+          script: |
+            cd ${{env.REMOTE_DIR}}
+            pwd
