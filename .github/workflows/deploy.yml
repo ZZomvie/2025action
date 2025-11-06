@@ -12,3 +12,8 @@ jobs:
     steps:
       - name: hello world
         run: echo "hello world"
+
+      - name: many sentence
+        run: |
+          echo "bad"
+          echo "bye"
