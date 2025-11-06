@@ -17,3 +17,8 @@ jobs:
         run: |
           echo "bad"
           echo "bye"
+
+      - name: use variable
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
